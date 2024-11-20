@@ -4,22 +4,15 @@ import Test from "./pages/test";
 import Home from "./pages/user/Home";
 import Notfound from "./pages/Notfound";
 import Layout from "./pages/user/Layout";
+import About from "./pages/user/About";
+import Contact from "./pages/user/Contact";
+import ProductDetail from "./pages/user/ProductDetail";
 // import { Outlet } from "react-router-dom";
 
-const About = () => <div>About Page</div>;
-const Contact = () => <div>Contact Page</div>;
-// const Layout = () => (
-//   <div>
-//     <div className="border p-10">header</div>
-//     <main>
-//       <Outlet />
-//     </main>{" "}
-//   </div>
-// );
 function App() {
   return (
     <>
-      <div className="min-h-screen bg-custom-bg">
+      <div className="min-h-screen bg-[#f6fbfe]">
         <BrowserRouter>
           <ToastContainer />
           <Routes>
@@ -28,6 +21,10 @@ function App() {
               <Route path="/about" element={<About />} />
 
               <Route path="/contact" element={<Contact />} />
+              <Route
+                path="/products/detail/:pcode"
+                element={<ProductDetail />}
+              />
             </Route>
 
             <Route path="*" element={<Notfound />} />

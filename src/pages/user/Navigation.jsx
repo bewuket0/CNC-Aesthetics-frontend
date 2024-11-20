@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 const Navigation = () => {
   return (
     // bg-custom-primary  // bg-navy-blue
-    <header className="border border-b py-4 text-custom-primary">
-      {/*  <header className="bg-custom-primary py-5 text-white"> */}
+    // <header className="border border-b py-4 text-custom-primary">
+    <header className="bg-custom-primary py-5 text-white">
       <div className="container mx-auto flex items-center justify-between">
-        <Link href="/" className="text-2xl font-bold">
+        <Link to={"/"} className="text-2xl font-bold">
           Logo
         </Link>
         {/* <nav className="hidden space-x-12 md:flex">
@@ -29,13 +29,14 @@ const Navigation = () => {
           </Link>
         </nav> */}
         <div className="flex flex-row items-center space-x-4">
-          <input
+          {/* <input
             type="search"
-            className="w-[500px] rounded-md border-b border-slate-300 p-1"
+            className="w-[500px] rounded-md border p-2 outline-none focus:border"
             name=""
+            placeholder="Search Products ..."
             id=""
           />
-          <p>search</p>
+          <p>search</p> */}
         </div>
         <div className="flex flex-row space-x-5">
           {/* <User className="h-6 w-6" /> */}

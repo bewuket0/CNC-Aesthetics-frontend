@@ -13,8 +13,13 @@ import { Link } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
   console.log("product ", product);
-  const { product_name, discounted_from, product_price, product_image } =
-    product;
+  const {
+    product_name,
+    discounted_from,
+    product_code,
+    product_price,
+    product_image,
+  } = product;
 
   return (
     // <Card className="w-[300px] border-none bg-transparent">
@@ -44,7 +49,12 @@ const ProductCard = ({ product }) => {
           </div>
         </div>
         <div className="mr-3 flex items-baseline justify-between">
-          <Link className="text-custom-primary hover:underline">Detail</Link>
+          <Link
+            to={`/products/detail/${product_code ?? 2}`}
+            className="text-custom-primary hover:underline"
+          >
+            Detail
+          </Link>
           <Button size="icon" className="bg-custom-primary hover:bg-sky-500">
             <BsCart2 size={32} />
             {/*   Add To Cart  */}

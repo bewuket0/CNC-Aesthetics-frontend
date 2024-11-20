@@ -16,8 +16,12 @@ const Footer = () => {
           <div className="flex w-1/3 flex-row justify-between">
             <div className="flex flex-col">
               <h2 className="text-lg font-semibold">Brand</h2>
-              <Link className="hover:text-sky-600">About Us</Link>
-              <Link className="hover:text-sky-600">Contact</Link>
+              <Link to={"/about"} className="hover:text-sky-600">
+                About Us
+              </Link>
+              <Link to={"/contact"} className="hover:text-sky-600">
+                Contact
+              </Link>
               <Link className="hover:text-sky-600"></Link>
             </div>
 
