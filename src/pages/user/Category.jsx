@@ -62,7 +62,7 @@ const productsList = [
 ];
 const Category = () => {
   return (
-    <div className="">
+    <div className="mx-20">
       <Carousel
         opts={{
           align: "start",

@@ -29,7 +29,6 @@ const ProductCard = ({ product }) => {
         <CardDescription>Deploy your new project in one-click.</CardDescription>
       </CardHeader>
       <div></div> */}
-
       <div className="mx-4 my-5">
         <img src={product_image} className="h-[200px] w-full rounded-t-lg" />
         <div>
@@ -40,9 +39,7 @@ const ProductCard = ({ product }) => {
             repellat.
           </p> */}
           <div className="flex justify-between">
-            <p className="text-lg font-semibold text-sky-700">
-              {product_price} Birr
-            </p>
+            <p className="text-lg text-sky-700">{product_price} Birr</p>
             <p className="text-md text-slate-400 line-through">
               {discounted_from ? `${discounted_from} Birr` : ""}
             </p>
@@ -55,8 +52,11 @@ const ProductCard = ({ product }) => {
           >
             Detail
           </Link>
-          <Button size="icon" className="bg-custom-primary hover:bg-sky-500">
-            <BsCart2 size={32} />
+          <Button
+            size="icon"
+            className="bg-transparent font-bold text-custom-primary hover:bg-transparent hover:text-sky-600"
+          >
+            <BsCart2 size={34} />
             {/*   Add To Cart  */}
           </Button>
         </div>

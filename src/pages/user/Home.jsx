@@ -55,7 +55,7 @@ const productsList = [
 const Home = () => {
   return (
     <div className="">
-      <div className="relative mx-20 my-16 py-20">
+      <div className="relative my-16 py-20">
         <h2 className="mb-7 text-center text-4xl">Latest Products</h2>
         <Category />
       </div>
@@ -69,10 +69,20 @@ const Home = () => {
               sunt dolorum minima.
             </p> */}
           </div>
-          <div className="flex flex-row flex-wrap items-start justify-start gap-x-14 gap-y-9">
-            {productsList.map((product) => {
-              return <ProductCard product={product} />;
-            })}
+          <div>
+            <div className="flex flex-row flex-wrap items-start justify-start gap-x-14 gap-y-9">
+              {productsList.map((product) => {
+                return <ProductCard product={product} />;
+              })}
+            </div>
+            <div className="my-5 text-center text-lg">
+              <Link
+                className="hover:text-sky-600 hover:underline"
+                to="/products"
+              >
+                View More Products
+              </Link>
+            </div>
           </div>
         </div>
       </div>

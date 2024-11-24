@@ -7,6 +7,9 @@ import Layout from "./pages/user/Layout";
 import About from "./pages/user/About";
 import Contact from "./pages/user/Contact";
 import ProductDetail from "./pages/user/ProductDetail";
+import Category from "./pages/user/Category";
+import Products from "./pages/user/Products";
+import ScrollToTop from "./components/ScrollToTop";
 // import { Outlet } from "react-router-dom";
 
 function App() {
@@ -15,12 +18,15 @@ function App() {
       <div className="min-h-screen bg-[#f6fbfe]">
         <BrowserRouter>
           <ToastContainer />
+          <ScrollToTop />
           <Routes>
             <Route element={<Layout />}>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
 
               <Route path="/contact" element={<Contact />} />
+              <Route path="/categories" element={<Category />} />
+              <Route path="/products" element={<Products />} />
               <Route
                 path="/products/detail/:pcode"
                 element={<ProductDetail />}

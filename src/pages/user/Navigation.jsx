@@ -28,15 +28,19 @@ const Navigation = () => {
             Contact Us
           </Link>
         </nav> */}
-        <div className="flex flex-row items-center space-x-4">
-          {/* <input
+        {/* <div className="flex flex-row items-center space-x-4">
+           <input
             type="search"
             className="w-[500px] rounded-md border p-2 outline-none focus:border"
             name=""
             placeholder="Search Products ..."
             id=""
-          />
-          <p>search</p> */}
+          /> 
+          <p>search</p>
+        </div> */}
+        <div className="flex flex-row space-x-4">
+          <Link to={"/products"}>Products </Link>
+          <Link to={"/categories"}>Categories </Link>
         </div>
         <div className="flex flex-row space-x-5">
           {/* <User className="h-6 w-6" /> */}
