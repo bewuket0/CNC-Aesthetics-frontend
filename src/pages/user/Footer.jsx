@@ -52,9 +52,12 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-row justify-between border-t border-slate-500 pt-3 text-slate-300">
-          <div></div>
-          <div>@2024, All rights reserved</div>
+        <div className="flex flex-row justify-between border-t border-slate-500 pt-3 text-sm text-slate-300">
+          <div>Copyright @ 2024, All rights reserved</div>
+          <div className="flex space-x-4">
+            <p>Terms & conditions</p>
+            <p>Privacy Policy</p>
+          </div>
         </div>
       </div>
     </div>

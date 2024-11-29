@@ -3,7 +3,7 @@ const Navigation = () => {
   return (
     // bg-custom-primary  // bg-navy-blue
     // <header className="border border-b py-4 text-custom-primary">
-    <header className="bg-custom-primary py-5 text-white">
+    <header className="border-b py-5 text-custom-primary">
       <div className="container mx-auto flex items-center justify-between">
         <Link to={"/"} className="text-2xl font-bold">
           Logo
@@ -46,6 +46,7 @@ const Navigation = () => {
           {/* <User className="h-6 w-6" /> */}
 
           <Link
+            to={"/cart"}
             className="rounded-full p-2 transition-colors hover:bg-blue-800"
             aria-label="Account"
           >

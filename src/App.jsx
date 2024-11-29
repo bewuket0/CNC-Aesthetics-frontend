@@ -10,6 +10,7 @@ import ProductDetail from "./pages/user/ProductDetail";
 import Category from "./pages/user/Category";
 import Products from "./pages/user/Products";
 import ScrollToTop from "./components/ScrollToTop";
+import Cart from "./pages/user/Cart";
 // import { Outlet } from "react-router-dom";
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
                 path="/products/detail/:pcode"
                 element={<ProductDetail />}
               />
+              <Route path="/cart" element={<Cart />} />
             </Route>
 
             <Route path="*" element={<Notfound />} />
