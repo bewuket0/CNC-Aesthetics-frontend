@@ -11,6 +11,10 @@ import Category from "./pages/user/Category";
 import Products from "./pages/user/Products";
 import ScrollToTop from "./components/ScrollToTop";
 import Cart from "./pages/user/Cart";
+import { AdminLayout } from "./pages/admin/Layout";
+import Categories from "./pages/admin/Categories";
+import Dashboard from "./pages/admin/Dashboard";
+import DashProducts from "./pages/admin/Products";
 // import { Outlet } from "react-router-dom";
 
 function App() {
@@ -21,6 +25,12 @@ function App() {
           <ToastContainer />
           <ScrollToTop />
           <Routes>
+            <Route path="/admin/" element={<AdminLayout />}>
+              <Route path="" element={<Dashboard />} />
+              <Route path="categories" element={<Categories />} />
+              <Route path="products" element={<DashProducts />} />
+              {/* <Route path="products" element={<Categories />} /> */}
+            </Route>
             <Route element={<Layout />}>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />

@@ -10,6 +10,7 @@ import {
 import { IoCartOutline } from "react-icons/io5";
 import { BsCart2 } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { useStore } from "@/store/store";
 
 const ProductCard = ({ product }) => {
   console.log("product ", product);
@@ -20,6 +21,25 @@ const ProductCard = ({ product }) => {
     product_price,
     product_image,
   } = product;
+
+  // const addCartItem = useStore((state) => state.addCartItem);
+
+  // const addusetore = useStore((state) =>
+  //   state.addCartItem({
+  //     productName: "New Product 00",
+  //     productImage: "/path/to/image.jpg",
+  //     discount: 10,
+  //     quantity: 3,
+  //     price: 130,
+  //   })
+  // );
+  // const add = useStore.getState().addCartItem({
+  //   productName: "New Product",
+  //   productImage: "/path/to/image.jpg",
+  //   discount: 5,
+  //   quantity: 1,
+  //   price: 100,
+  // });
 
   return (
     // <Card className="w-[300px] border-none bg-transparent">
@@ -53,6 +73,7 @@ const ProductCard = ({ product }) => {
             Detail
           </Link>
           <Button
+            // onClick={() => addusetore()}
             size="icon"
             className="bg-transparent font-bold text-custom-primary hover:bg-transparent hover:text-sky-600"
           >

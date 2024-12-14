@@ -4,10 +4,12 @@ import { IoAdd, IoClose, IoRemove } from "react-icons/io5";
 import { AiOutlineDelete } from "react-icons/ai";
 import { ChevronRight } from "lucide-react";
 import { CiBookmark } from "react-icons/ci";
+import { useStore } from "@/store/store";
 
 import { Button } from "@/components/ui/button";
 const CartCard = ({ item }) => {
   console.log("item", item);
+  const deleteCartItem = useStore((state) => state.deleteCartItem);
 
   return (
     <div>
@@ -61,7 +63,11 @@ const CartCard = ({ item }) => {
                   {/* <ChevronRight /> */}
                   <CiBookmark />
                 </Button>
-                <Button variant="outline" size="icon">
+                <Button
+                  // onClick={() => deleteCartItem(item?.id)}
+                  variant="outline"
+                  size="icon"
+                >
                   {/* <ChevronRight /> */}
                   <AiOutlineDelete size={18} />
                 </Button>
