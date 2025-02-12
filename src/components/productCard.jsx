@@ -18,9 +18,11 @@ const ProductCard = ({ product }) => {
     product_name,
     discounted_from,
     product_code,
-    product_price,
+    product_price = 10,
     product_image,
   } = product;
+
+  console.log("product image ", product_image);
 
   // const addCartItem = useStore((state) => state.addCartItem);
 

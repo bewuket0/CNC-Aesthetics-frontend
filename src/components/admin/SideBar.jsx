@@ -5,7 +5,7 @@ import {
 } from "@/components/ui/collapsible";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
+import { Calendar, Home, Inbox, Search, Settings, User } from "lucide-react";
 import {
   Sidebar,
   SidebarInset,
@@ -43,6 +43,11 @@ const items = [
     icon: Inbox,
   },
   {
+    title: "Users",
+    url: "#",
+    icon: User,
+  },
+  {
     title: "Calendar",
     url: "#",
     icon: Calendar,
@@ -60,12 +65,12 @@ const items = [
 ];
 export function SideBar() {
   return (
-    <Sidebar className="bg-white">
-      <SidebarContent>
+    <Sidebar className="">
+      <SidebarContent className="bg-white px-2">
         <SidebarGroup>
           <SidebarGroupLabel className="mt-10">Application</SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu>
+            <SidebarMenu className="gap-y-2">
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>

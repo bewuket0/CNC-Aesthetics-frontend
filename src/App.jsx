@@ -17,6 +17,7 @@ import Dashboard from "./pages/admin/Dashboard";
 import DashProducts from "./pages/admin/Products";
 // import { Outlet } from "react-router-dom";
 
+// require("dotenv").config();
 function App() {
   return (
     <>

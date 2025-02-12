@@ -12,6 +12,18 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+
+const base_url = import.meta.env.VITE_BASE_URL;
+
+const fetchProducts = async (page) => {
+  let url = `${base_url}/product/fetch-all`;
+  console.log(" url ==> ", url);
+  return axios.get(url);
+};
+
 const categories = [
   {
     value: "all",
@@ -67,7 +79,26 @@ const productsList = [
     // discounted_from: 500,
   },
 ];
+
 const Products = () => {
+  const [page, setPage] = useState(1);
+
+  const { data, error, isLoading, isError, refetch } = useQuery({
+    queryKey: ["products"],
+    queryFn: () => fetchProducts(page),
+    staleTime: 30000,
+  });
+
+  if (isLoading) {
+    return <h1>Loading...</h1>;
+  }
+  if (isError) {
+    return <h1>{error.message}</h1>;
+  }
+
+  const products_list = data?.data;
+  console.log("product data ---> ", products_list);
+
   return (
     <div className="mx-auto w-4/5">
       <h2 className="my-10 text-center text-4xl">Products</h2>
@@ -108,7 +139,10 @@ const Products = () => {
       </div>
       {/* className="flex flex-row flex-wrap justify-start gap-x-14 gap-y-9" */}
       <div className="grid grid-cols-4 items-start gap-y-10">
-        {productsList.map((product) => {
+        {/* {productsList.map((product) => {
+          return <ProductCard product={product} />;
+        })} */}
+        {products_list?.docs.map((product) => {
           return <ProductCard product={product} />;
         })}
       </div>

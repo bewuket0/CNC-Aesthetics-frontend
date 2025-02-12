@@ -13,7 +13,7 @@ const CartCard = ({ item }) => {
 
   return (
     <div>
-      <Card className="h-[120px] w-full">
+      <Card className="my-5 h-[120px] w-full">
         <CardContent className="flex h-full flex-row items-center px-5 py-3">
           {/* Image Section */}
           <div className="h-[100px] w-[150px]">

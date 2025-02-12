@@ -20,7 +20,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { TableOfContents } from "lucide-react";
+import { Fullscreen, TableOfContents } from "lucide-react";
 
 const DashProducts = () => {
   return (
@@ -44,6 +44,10 @@ const DashProducts = () => {
               </DialogDescription>
             </DialogHeader>
             <div className="grid gap-4 py-4">
+              <div className="grid w-full max-w-sm items-center gap-1.5">
+                <Label htmlFor="category">Category</Label>
+                <Input id="category" />
+              </div>
               <div className="grid w-full max-w-sm items-center gap-1.5">
                 <Label htmlFor="name">Product Name</Label>
                 <Input id="name" />
@@ -72,8 +76,10 @@ const DashProducts = () => {
           <TableHeader>
             <TableRow>
               <TableHead>Product Code</TableHead>
+              <TableHead>Product Category</TableHead>
               <TableHead>Product Name</TableHead>
               <TableHead>Product Price</TableHead>
+              <TableHead>Product Discount</TableHead>
               <TableHead>Created At</TableHead>
               <TableHead>Updated Date</TableHead>
               <TableHead>Status</TableHead>
@@ -86,7 +92,9 @@ const DashProducts = () => {
             <TableRow>
               <TableCell>2156589602</TableCell>
               <TableCell>Crafted</TableCell>
+              <TableCell>Crafted</TableCell>
               <TableCell>89.9</TableCell>
+              <TableCell>9.9</TableCell>
               <TableCell>December 14th 2024</TableCell>
               <TableCell>December 14th 2024</TableCell>
               <TableCell>Active</TableCell>
@@ -94,7 +102,24 @@ const DashProducts = () => {
               {/* <TableCell>$89.99</TableCell> */}
               <TableCell className="text-right">
                 <Button variant="icon">
-                  <TableOfContents size={18} />{" "}
+                  <Fullscreen size={18} />{" "}
+                </Button>
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>2156589602</TableCell>
+              <TableCell>Crafted</TableCell>
+              <TableCell>Crafted</TableCell>
+              <TableCell>89.9</TableCell>
+              <TableCell>9.9</TableCell>
+              <TableCell>December 14th 2024</TableCell>
+              <TableCell>December 14th 2024</TableCell>
+              <TableCell>Active</TableCell>
+              {/* <TableCell>Credit Card</TableCell> */}
+              {/* <TableCell>$89.99</TableCell> */}
+              <TableCell className="text-right">
+                <Button variant="outline" size="icon">
+                  <Fullscreen size={18} />{" "}
                 </Button>
               </TableCell>
             </TableRow>

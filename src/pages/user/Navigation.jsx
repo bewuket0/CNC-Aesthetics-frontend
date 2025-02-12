@@ -3,9 +3,9 @@ const Navigation = () => {
   return (
     // bg-custom-primary  // bg-navy-blue
     // <header className="border border-b py-4 text-custom-primary">
-    <header className="border-b py-5 text-custom-primary">
+    <header className="border-b py-4">
       <div className="container mx-auto flex items-center justify-between">
-        <Link to={"/"} className="text-2xl font-bold">
+        <Link to={"/"} className="text-xl font-bold text-custom-primary">
           Logo
         </Link>
         {/* <nav className="hidden space-x-12 md:flex">
@@ -42,7 +42,7 @@ const Navigation = () => {
           <Link to={"/products"}>Products </Link>
           <Link to={"/categories"}>Categories </Link>
         </div>
-        <div className="flex flex-row space-x-5">
+        <div className="flex flex-row items-center space-x-5">
           {/* <User className="h-6 w-6" /> */}
 
           <Link
@@ -84,6 +84,7 @@ const Navigation = () => {
               />
             </svg>
           </Link>
+          <Link to={"#"}>signin</Link>
         </div>
       </div>
     </header>
