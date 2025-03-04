@@ -96,19 +96,24 @@ const ProductCard = ({ product }) => {
           </Link>
           {product_in_cart ? (
             <div className="flex items-center space-x-2">
-              <button
+              <Button
                 onClick={() => decrementQuantity(product_in_cart.product_code)}
-                className="flex h-6 w-6 items-center justify-center rounded border"
+                // className="flex h-6 w-6 items-center justify-center rounded border"
+                size="icon"
+                className="bg-transparent font-bold"
               >
-                <IoRemove />
-              </button>
+                <IoRemove size={34} />
+              </Button>
               <span>{product_in_cart.quantity}</span>
-              <button
+              <Button
                 onClick={() => incrementQuantity(product_in_cart.product_code)}
-                className="flex h-6 w-6 items-center justify-center rounded border"
+                size="icon"
+                className="bg-transparent font-bold"
+
+                // className="flex h-6 w-6 items-center justify-center rounded border"
               >
-                <IoAdd />
-              </button>
+                <IoAdd size={34} />
+              </Button>
             </div>
           ) : (
             <Button

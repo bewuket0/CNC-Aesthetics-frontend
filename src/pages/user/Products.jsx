@@ -138,7 +138,8 @@ const Products = () => {
         </div>
       </div>
       {/* className="flex flex-row flex-wrap justify-start gap-x-14 gap-y-9" */}
-      <div className="grid grid-cols-4 items-start gap-y-10">
+      <div className="flex flex-wrap items-start gap-4">
+        {/* <div className="grid grid-cols-3 items-start gap-y-10 sm:grid-cols-4"> */}
         {/* {productsList.map((product) => {
           return <ProductCard product={product} />;
         })} */}
