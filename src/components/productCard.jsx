@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { IoCartOutline } from "react-icons/io5";
+import { IoAdd, IoCartOutline, IoRemove } from "react-icons/io5";
 import { BsCart2 } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useStore } from "@/store/store";
@@ -25,17 +25,24 @@ const ProductCard = ({ product }) => {
   console.log("product image ", product_image);
 
   const addCartItem = useStore((state) => state.addCartItem);
-
+  const cartItems = useStore((state) => state.cartItems);
   const addToCartHandler = () => {
     addCartItem({
-      id: product_code,
-      productName: product_name,
-      productImage: product_image,
+      product_code: product_code,
+      product_name: product_name,
+      product_image: product_image,
       discount: 0,
       quantity: 1,
-      price: product_price,
+      product_price: product_price,
     });
   };
+  console.log("cart items ", cartItems);
+
+  const product_in_cart = cartItems.find(
+    (product) => product.product_code == product_code
+  );
+  console.log("product_in_cart ==> ", product_in_cart);
+
   // const addusetore = useStore((state) =>
   //   state.addCartItem({
   //     productName: "New Product 00",
@@ -52,6 +59,9 @@ const ProductCard = ({ product }) => {
   //   quantity: 1,
   //   price: 100,
   // });
+
+  const incrementQuantity = useStore((state) => state.incrementQuantity);
+  const decrementQuantity = useStore((state) => state.decrementQuantity);
 
   return (
     // <Card className="w-[300px] border-none bg-transparent">
@@ -84,14 +94,32 @@ const ProductCard = ({ product }) => {
           >
             Detail
           </Link>
-          <Button
-            onClick={addToCartHandler}
-            size="icon"
-            className="bg-transparent font-bold text-custom-primary hover:bg-transparent hover:text-sky-600"
-          >
-            <BsCart2 size={34} />
-            {/*   Add To Cart  */}
-          </Button>
+          {product_in_cart ? (
+            <div className="flex items-center space-x-2">
+              <button
+                onClick={() => decrementQuantity(product_in_cart.product_code)}
+                className="flex h-6 w-6 items-center justify-center rounded border"
+              >
+                <IoRemove />
+              </button>
+              <span>{product_in_cart.quantity}</span>
+              <button
+                onClick={() => incrementQuantity(product_in_cart.product_code)}
+                className="flex h-6 w-6 items-center justify-center rounded border"
+              >
+                <IoAdd />
+              </button>
+            </div>
+          ) : (
+            <Button
+              onClick={addToCartHandler}
+              size="icon"
+              className="bg-transparent font-bold text-custom-primary hover:bg-transparent hover:text-sky-600"
+            >
+              <BsCart2 size={34} />
+              {/*   Add To Cart  */}
+            </Button>
+          )}
         </div>
       </div>
     </Card>

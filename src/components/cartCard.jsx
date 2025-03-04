@@ -20,7 +20,7 @@ const CartCard = ({ item }) => {
           <div className="h-[100px] w-[150px]">
             <img
               className="h-full w-full rounded-md object-cover"
-              src={item?.productImage}
+              src={item?.product_image}
               alt="Product"
             />
           </div>
@@ -29,14 +29,14 @@ const CartCard = ({ item }) => {
             {/* Header Section */}
             <div className="flex justify-between">
               <div className="">
-                <h2 className="text-lg">{item?.productName || ""}</h2>
+                <h2 className="text-lg">{item?.product_name || ""}</h2>
                 <div className="flex flex-row space-x-4">
                   <p className="text-sm text-sky-700">
-                    {item?.price || 0} Birr
+                    {item?.product_price || 0} Birr
                   </p>
-                  {item?.discount && (
+                  {item?.discount > 0 && (
                     <p className="text-sm text-slate-500 line-through">
-                      {item?.discount || 0} Birr
+                      {item?.discount} Birr
                     </p>
                   )}
                 </div>
@@ -45,21 +45,21 @@ const CartCard = ({ item }) => {
                 <IoClose size={20} />
               </div> */}
               <p className="text-lg font-semibold text-sky-700">
-                {item?.price * item?.quantity} Birr
+                {item?.product_price * item?.quantity} Birr
               </p>
             </div>
             {/* Price and Quantity Section */}
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
                 <button
-                  onClick={() => decrementQuantity(item.id)}
+                  onClick={() => decrementQuantity(item.product_code)}
                   className="flex h-6 w-6 items-center justify-center rounded border"
                 >
                   <IoRemove />
                 </button>
                 <span>{item?.quantity}</span>
                 <button
-                  onClick={() => incrementQuantity(item.id)}
+                  onClick={() => incrementQuantity(item.product_code)}
                   className="flex h-6 w-6 items-center justify-center rounded border"
                 >
                   <IoAdd />
@@ -71,7 +71,7 @@ const CartCard = ({ item }) => {
                   <CiBookmark />
                 </Button> */}
                 <Button
-                  // onClick={() => deleteCartItem(item?.id)}
+                  onClick={() => deleteCartItem(item.product_code)}
                   variant="outline"
                   size="icon"
                 >

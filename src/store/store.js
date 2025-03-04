@@ -39,27 +39,33 @@ const store = (set) => ({
   //     })),
   removeCartItems: () => set({ cartItems: [] }),
 
-  deleteCartItem: ({ id }) =>
+  deleteCartItem: (product_code) =>
     set((state) => ({
-      cartItems: state.cartItems.filter((item) => item.id !== id),
+      cartItems: state.cartItems.filter(
+        (item) => item.product_code !== product_code
+      ),
     })),
 
   addCartItem: (item) =>
     set((state) => ({
-      cartItems: [...state.cartItems, { ...item, id: uuidv4() }],
+      cartItems: [...state.cartItems, { ...item }],
     })),
-  incrementQuantity: (id) =>
+  incrementQuantity: (product_code) =>
     set((state) => ({
       cartItems: state.cartItems.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+        item.product_code === product_code
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
       ),
     })),
 
-  decrementQuantity: (id) =>
+  decrementQuantity: (product_code) =>
     set((state) => ({
       cartItems: state.cartItems
         .map((item) =>
-          item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+          item.product_code === product_code
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
         )
         .filter((item) => item.quantity > 0), // Remove item if quantity becomes 0
     })),
