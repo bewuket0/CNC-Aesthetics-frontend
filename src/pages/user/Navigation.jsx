@@ -65,7 +65,7 @@ const Navigation = () => {
               />
             </svg>
           </Link>
-          <Link
+          {/* <Link
             className="rounded-full p-2 transition-colors hover:bg-blue-800"
             aria-label="Account"
           >
@@ -84,7 +84,7 @@ const Navigation = () => {
               />
             </svg>
           </Link>
-          <Link to={"#"}>signin</Link>
+          <Link to={"#"}>signin</Link> */}
         </div>
       </div>
     </header>

@@ -41,24 +41,7 @@ const ProductCard = ({ product }) => {
   const product_in_cart = cartItems.find(
     (product) => product.product_code == product_code
   );
-  console.log("product_in_cart ==> ", product_in_cart);
-
-  // const addusetore = useStore((state) =>
-  //   state.addCartItem({
-  //     productName: "New Product 00",
-  //     productImage: "/path/to/image.jpg",
-  //     discount: 10,
-  //     quantity: 3,
-  //     price: 130,
-  //   })
-  // );
-  // const add = useStore.getState().addCartItem({
-  //   productName: "New Product",
-  //   productImage: "/path/to/image.jpg",
-  //   discount: 5,
-  //   quantity: 1,
-  //   price: 100,
-  // });
+  // console.log("product_in_cart ==> ", product_in_cart);
 
   const incrementQuantity = useStore((state) => state.incrementQuantity);
   const decrementQuantity = useStore((state) => state.decrementQuantity);
@@ -75,11 +58,13 @@ const ProductCard = ({ product }) => {
         <img src={product_image} className="h-[200px] w-full rounded-t-lg" />
         <div>
           {/* <h2>Category</h2> */}
-          <p className="my-1 text-xl font-semibold">{product_name}</p>
-          {/* <p className="text-md border">
-            Lorem ipsum, dolor sit amet con sec tetur adipisicing elit. Ducimus,
-            repellat.
-          </p> */}
+          {/* <p className="my-1 text-lg font-semibold">{product_name}</p> */}
+          <p className="my-1 text-lg font-semibold">
+            {product_name.length > 25
+              ? `${product_name.slice(0, 25)} ...`
+              : product_name}
+          </p>
+
           <div className="flex justify-between">
             <p className="text-lg text-sky-700">{product_price} Birr</p>
             <p className="text-md text-slate-400 line-through">
@@ -95,25 +80,25 @@ const ProductCard = ({ product }) => {
             Detail
           </Link>
           {product_in_cart ? (
-            <div className="flex items-center space-x-2">
-              <Button
+            <div className="my-2 flex items-center space-x-2">
+              <button
                 onClick={() => decrementQuantity(product_in_cart.product_code)}
-                // className="flex h-6 w-6 items-center justify-center rounded border"
-                size="icon"
-                className="bg-transparent font-bold"
+                className="flex h-6 w-6 cursor-pointer items-center justify-center rounded border hover:bg-sky-600 hover:text-white"
+                // size="icon"
+                // className="bg-transparent font-bold"
               >
-                <IoRemove size={34} />
-              </Button>
+                <IoRemove />
+              </button>
               <span>{product_in_cart.quantity}</span>
-              <Button
+              <buton
                 onClick={() => incrementQuantity(product_in_cart.product_code)}
-                size="icon"
-                className="bg-transparent font-bold"
+                // size="icon"
+                // className="bg-transparent font-bold"
 
-                // className="flex h-6 w-6 items-center justify-center rounded border"
+                className="flex h-6 w-6 cursor-pointer items-center justify-center rounded border hover:bg-sky-600 hover:text-white"
               >
-                <IoAdd size={34} />
-              </Button>
+                <IoAdd />
+              </buton>
             </div>
           ) : (
             <Button

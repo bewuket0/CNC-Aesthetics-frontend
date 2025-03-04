@@ -146,9 +146,11 @@ const Cart = () => {
               </div>
             </div>
           </div>
-          <div className="min-w-96 space-y-5 py-5">
-            <PriceDetail />
-          </div>
+          {cartItems.length > 0 && (
+            <div className="min-w-96 space-y-5 py-5">
+              <PriceDetail />
+            </div>
+          )}
         </div>
       </div>
     </div>

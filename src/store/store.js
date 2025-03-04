@@ -33,6 +33,8 @@ const store = (set) => ({
     //   price: 190,
     // },
   ],
+  toBeDelivered: true,
+  deliveryCost: 25,
   //   addTask: ({ productName, state, id }) =>
   //     set((store) => ({
   //       tasks: [...store.tasks, { productName, state, id }],

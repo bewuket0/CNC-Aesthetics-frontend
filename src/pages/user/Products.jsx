@@ -126,23 +126,15 @@ const Products = () => {
                     </SelectItem>
                   );
                 })}
-                {/* <SelectLabel>Categories</SelectLabel>
-                <SelectItem value="apple">Apple</SelectItem>
-                <SelectItem value="banana">Banana</SelectItem>
-                <SelectItem value="blueberry">Blueberry</SelectItem>
-                <SelectItem value="grapes">Grapes</SelectItem>
-                <SelectItem value="pineapple">Pineapple</SelectItem> */}
               </SelectGroup>
             </SelectContent>
           </Select>
         </div>
       </div>
       {/* className="flex flex-row flex-wrap justify-start gap-x-14 gap-y-9" */}
-      <div className="flex flex-wrap items-start gap-4">
+      <div className="flex flex-wrap items-start gap-6">
         {/* <div className="grid grid-cols-3 items-start gap-y-10 sm:grid-cols-4"> */}
-        {/* {productsList.map((product) => {
-          return <ProductCard product={product} />;
-        })} */}
+
         {products_list?.docs.map((product) => {
           return <ProductCard product={product} />;
         })}
