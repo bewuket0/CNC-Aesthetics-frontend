@@ -24,8 +24,18 @@ const ProductCard = ({ product }) => {
 
   console.log("product image ", product_image);
 
-  // const addCartItem = useStore((state) => state.addCartItem);
+  const addCartItem = useStore((state) => state.addCartItem);
 
+  const addToCartHandler = () => {
+    addCartItem({
+      id: product_code,
+      productName: product_name,
+      productImage: product_image,
+      discount: 0,
+      quantity: 1,
+      price: product_price,
+    });
+  };
   // const addusetore = useStore((state) =>
   //   state.addCartItem({
   //     productName: "New Product 00",
@@ -75,7 +85,7 @@ const ProductCard = ({ product }) => {
             Detail
           </Link>
           <Button
-            // onClick={() => addusetore()}
+            onClick={addToCartHandler}
             size="icon"
             className="bg-transparent font-bold text-custom-primary hover:bg-transparent hover:text-sky-600"
           >

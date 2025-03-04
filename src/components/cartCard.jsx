@@ -10,7 +10,8 @@ import { Button } from "@/components/ui/button";
 const CartCard = ({ item }) => {
   console.log("item", item);
   const deleteCartItem = useStore((state) => state.deleteCartItem);
-
+  const incrementQuantity = useStore((state) => state.incrementQuantity);
+  const decrementQuantity = useStore((state) => state.decrementQuantity);
   return (
     <div>
       <Card className="my-5 h-[120px] w-full">
@@ -50,19 +51,25 @@ const CartCard = ({ item }) => {
             {/* Price and Quantity Section */}
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
-                <button className="flex h-6 w-6 items-center justify-center rounded border">
+                <button
+                  onClick={() => decrementQuantity(item.id)}
+                  className="flex h-6 w-6 items-center justify-center rounded border"
+                >
                   <IoRemove />
                 </button>
                 <span>{item?.quantity}</span>
-                <button className="flex h-6 w-6 items-center justify-center rounded border">
+                <button
+                  onClick={() => incrementQuantity(item.id)}
+                  className="flex h-6 w-6 items-center justify-center rounded border"
+                >
                   <IoAdd />
                 </button>
               </div>
               <div className="flex space-x-2 text-gray-500">
-                <Button variant="outline" size="icon">
-                  {/* <ChevronRight /> */}
+                {/* <Button variant="outline" size="icon">
+                  // {/* <ChevronRight /> 
                   <CiBookmark />
-                </Button>
+                </Button> */}
                 <Button
                   // onClick={() => deleteCartItem(item?.id)}
                   variant="outline"
