@@ -129,7 +129,7 @@ const Cart = () => {
                       </DialogHeader>
                       <DialogFooter>
                         <div className="space-x-4">
-                          <Button variant="outline">Cancel</Button>
+                          {/* <Button variant="outline">Cancel</Button> */}
                           <Button
                             onClick={removeCartItems}
                             // className="bg-rose-800 hover:bg-rose-700"

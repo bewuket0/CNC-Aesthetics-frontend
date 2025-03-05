@@ -1,5 +1,13 @@
 import { Link } from "react-router-dom";
+import { ShoppingCart } from "lucide-react";
+import { useState } from "react";
+import { useStore } from "@/store/store";
+
 const Navigation = () => {
+  // const [cartCount, setCartCount] = useState(0); // Example cart count
+  const cartItems = useStore((state) => state.cartItems);
+
+  let cartCount = cartItems.length;
   return (
     // bg-custom-primary  // bg-navy-blue
     // <header className="border border-b py-4 text-custom-primary">
@@ -39,15 +47,36 @@ const Navigation = () => {
           <p>search</p>
         </div> */}
         <div className="flex flex-row space-x-4">
-          <Link to={"/products"}>Products </Link>
-          <Link to={"/categories"}>Categories </Link>
+          <Link
+            className="transition-colors hover:text-sky-700"
+            to={"/products"}
+          >
+            Products{" "}
+          </Link>
+          <Link
+            className="transition-colors hover:text-sky-700"
+            to={"/categories"}
+          >
+            Categories{" "}
+          </Link>
         </div>
+        {/* <nav className="flex justify-end bg-white p-4 shadow-md"> */}
+        {/* </nav> */}
         <div className="flex flex-row items-center space-x-5">
           {/* <User className="h-6 w-6" /> */}
+          <Link to={"/cart"} className="relative">
+            <ShoppingCart className="h-7 w-7 text-gray-700 hover:text-sky-700" />
 
-          <Link
+            {cartCount > 0 && (
+              <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-xs font-bold text-white">
+                {cartCount}
+              </span>
+            )}
+          </Link>
+
+          {/* <Link
             to={"/cart"}
-            className="rounded-full p-2 transition-colors hover:bg-blue-800"
+            className="transition-colors hover:text-sky-700"
             aria-label="Account"
           >
             <svg
@@ -64,7 +93,7 @@ const Navigation = () => {
                 d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
               />
             </svg>
-          </Link>
+          </Link> */}
           {/* <Link
             className="rounded-full p-2 transition-colors hover:bg-blue-800"
             aria-label="Account"

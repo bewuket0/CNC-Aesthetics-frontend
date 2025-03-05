@@ -19,6 +19,7 @@ import DashProducts from "./pages/admin/Products";
 
 // require("dotenv").config();
 function App() {
+  // bg-[#FAFAFA]
   return (
     <>
       <div className="min-h-screen bg-[#f6fbfe]">

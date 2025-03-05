@@ -42,6 +42,15 @@ const PriceDetail = () => {
           </div>
           <div className="mt-3 flex flex-col gap-y-1">
             <div className="flex items-center justify-between">
+              <p>Price</p>
+              <p>{totalPrice}</p>
+            </div>
+            <div className="flex items-center justify-between">
+              <p>delivery</p>
+              <p>{totalDelivery}</p>
+            </div>
+
+            <div className="flex items-center justify-between">
               <p>discount</p>
               <p>{totalDiscount}</p>
             </div>
@@ -53,14 +62,7 @@ const PriceDetail = () => {
               <p>vat</p>
               <p>0</p>
             </div>
-            <div className="flex items-center justify-between">
-              <p>delivery</p>
-              <p>{totalDelivery}</p>
-            </div>
-            <div className="flex items-center justify-between">
-              <p>Price</p>
-              <p>{totalPrice}</p>
-            </div>
+
             <div className="my-1 flex items-center justify-between border-t py-2">
               <p className="font-medium">Total Price</p>
               <p>{totalPriceAfterDiscount}</p>
