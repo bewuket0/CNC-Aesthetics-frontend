@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import Test from "./pages/test";
 import Home from "./pages/user/Home";
 import Notfound from "./pages/Notfound";
@@ -15,6 +17,8 @@ import { AdminLayout } from "./pages/admin/Layout";
 import Categories from "./pages/admin/Categories";
 import Dashboard from "./pages/admin/Dashboard";
 import DashProducts from "./pages/admin/Products";
+import Checkout from "./pages/user/Checkout";
+import SuccessPage from "./pages/user/successPage";
 // import { Outlet } from "react-router-dom";
 
 // require("dotenv").config();
@@ -45,6 +49,8 @@ function App() {
                 element={<ProductDetail />}
               />
               <Route path="/cart" element={<Cart />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/success" element={<SuccessPage />} />
             </Route>
 
             <Route path="*" element={<Notfound />} />

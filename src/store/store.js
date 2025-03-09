@@ -33,7 +33,7 @@ const store = (set) => ({
     //   price: 190,
     // },
   ],
-  toBeDelivered: true,
+  toBeDelivered: false,
   deliveryCost: 25,
   //   addTask: ({ productName, state, id }) =>
   //     set((store) => ({
@@ -47,6 +47,12 @@ const store = (set) => ({
         (item) => item.product_code !== product_code
       ),
     })),
+
+  setDelivery: () =>
+    set((state) => ({
+      toBeDelivered: state.toBeDelivered,
+    })),
+  setDeliveryMethod: (value) => set({ toBeDelivered: value }), // Accept boolean value
 
   addCartItem: (item) =>
     set((state) => ({

@@ -3,8 +3,9 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import { useStore } from "@/store/store";
+import { Link } from "react-router-dom";
 
-const PriceDetail = () => {
+const PriceDetail = ({ title }) => {
   const cartItems = useStore((state) => state.cartItems);
   const toBeDelivered = useStore((state) => state.toBeDelivered);
   const deliveryCost = useStore((state) => state.deliveryCost);
@@ -27,8 +28,9 @@ const PriceDetail = () => {
 
   return (
     <div className="w-full">
-      <h2 className="mb-3 text-2xl">PriceDetail</h2>
-      <div className="border p-5">
+      <h2 className="mb-3 text-2xl">{title}</h2>
+      <div className="border-b"></div>
+      <div className="">
         <div>
           {/* <h2>Delivery</h2>
           <div className="flex items-center space-x-2">
@@ -67,11 +69,13 @@ const PriceDetail = () => {
               <p className="font-medium">Total Price</p>
               <p>{totalPriceAfterDiscount}</p>
             </div>
-            <div className="mt-10 w-full">
-              <Button className="w-full bg-custom-primary hover:bg-sky-800">
-                Checkout Order
-              </Button>
-            </div>
+            {/* <div className="mt-10 w-full">
+              <Link to={"/checkout"}>
+                <Button className="w-full bg-custom-primary hover:bg-sky-800">
+                  Checkout Order
+                </Button>
+              </Link>
+            </div> */}
           </div>
         </div>
       </div>

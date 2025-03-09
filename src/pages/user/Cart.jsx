@@ -18,6 +18,8 @@ import { useMemo, useState } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { Trash2 } from "lucide-react";
 import { PiShoppingCartSimpleThin } from "react-icons/pi";
+import { Link } from "react-router-dom";
+// import CheckoutSteps from "@/components/checkoutSteps";
 
 const Cart = () => {
   // const [open, setOpen] = useState(false);
@@ -35,9 +37,10 @@ const Cart = () => {
   // console.log("filtered", filtered);
   return (
     <div>
-      <div className="mx-auto my-10 w-3/4 bg-white p-10">
+      <div className="mx-auto my-10 w-3/4 p-10">
+        {" "}
+        {/* bg-white */}
         <h2 className="pb-2 text-4xl">Cart</h2>
-
         <div className="flex justify-between">
           <div className="w-3/5">
             {/* <div className="flex flex-row-reverse">
@@ -147,12 +150,20 @@ const Cart = () => {
             </div>
           </div>
           {cartItems.length > 0 && (
-            <div className="min-w-96 space-y-5 py-5">
-              <PriceDetail />
+            <div className="min-w-96 space-y-5 border p-5 py-5">
+              <PriceDetail title={"PriceDetail"} />
+              <div className="mt-10 w-full">
+                <Link to={"/checkout"}>
+                  <Button className="w-full bg-custom-primary hover:bg-sky-800">
+                    Checkout Order
+                  </Button>
+                </Link>
+              </div>
             </div>
           )}
         </div>
       </div>
+      {/* <CheckoutSteps /> */}
     </div>
   );
 };
