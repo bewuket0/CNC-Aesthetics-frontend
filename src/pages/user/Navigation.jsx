@@ -47,7 +47,7 @@ const Navigation = () => {
           <p>search</p>
         </div> */}
         <div className="flex flex-row space-x-4">
-          <Link
+          {/* <Link
             className="transition-colors hover:text-sky-700"
             to={"/products"}
           >
@@ -58,7 +58,7 @@ const Navigation = () => {
             to={"/categories"}
           >
             Categories{" "}
-          </Link>
+          </Link> */}
         </div>
         {/* <nav className="flex justify-end bg-white p-4 shadow-md"> */}
         {/* </nav> */}
