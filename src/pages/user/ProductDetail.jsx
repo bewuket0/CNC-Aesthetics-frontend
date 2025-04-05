@@ -12,10 +12,14 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { Link } from "react-router-dom";
+import { useStore } from "@/store/store";
+import { IoAdd, IoCartOutline, IoRemove } from "react-icons/io5";
 
 // zoom
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
+import { BsCart2 } from "react-icons/bs";
 
 const base_url = import.meta.env.VITE_BASE_URL;
 
@@ -41,6 +45,11 @@ const fetchProduct = async (product_code) => {
 };
 
 const ProductDetail = () => {
+  const addCartItem = useStore((state) => state.addCartItem);
+  const cartItems = useStore((state) => state.cartItems);
+  const incrementQuantity = useStore((state) => state.incrementQuantity);
+  const decrementQuantity = useStore((state) => state.decrementQuantity);
+
   const { pcode } = useParams(); // Fetching the "id" parameter from the URL
   console.log("prodicut code", pcode);
   const { data, error, isLoading, isError, refetch } = useQuery({
@@ -52,14 +61,49 @@ const ProductDetail = () => {
   console.log("data ", data);
   console.log("error ", error);
 
-  if (isLoading) {
-    return <h1>Loading...</h1>;
+  if (isLoading || !data?.data?.data) {
+    return (
+      <div className="mt-20 text-center text-xl">
+        Loading product details...
+      </div>
+    );
   }
+  // if (isLoading) {
+  //   return <h1>Loading...</h1>;
+  // }
+
   if (isError) {
     return <h1>{error.message}</h1>;
   }
-  const product_detail = data?.data?.data;
+
+  const product_detail = data.data.data;
   console.log("product detail ", product_detail);
+  console.log("product test = = >  ", {
+    product_code: product_detail.product_code,
+    product_name: product_detail.product_name,
+    product_image: product_detail.product_image,
+    discount: 0,
+    quantity: 1,
+    product_price: product_detail.product_price,
+  });
+
+  const product_in_cart = cartItems.find(
+    (product) => product.product_code == product_detail.product_code
+  );
+  console.log("product in cart ==== ", product_in_cart);
+  const addToCartHandler = () => {
+    addCartItem({
+      product_code: product_detail.product_code,
+      product_name: product_detail.product_name,
+      product_image: product_detail.product_image,
+      discount: 0,
+      quantity: 1,
+      product_price: product_detail.product_price,
+    });
+  };
+
+  const cart_add_css =
+    "flex h-10 w-11 cursor-pointer items-center justify-center rounded bg-sky-500 text-white hover:bg-sky-600";
 
   return (
     <div>
@@ -97,31 +141,74 @@ const ProductDetail = () => {
           <div className="w-1/2">
             <h1 className="text-3xl">{product_detail.product_name}</h1>
             <div className="my-3 flex gap-x-4">
-              <p className="text-xl text-slate-500 line-through decoration-slate-400">
-                {product.discounted_from} Birr
-              </p>
-              <p className="text-xl font-semibold text-red-700">
+              {product_detail.discount && (
+                <p className="text-xl text-slate-500 line-through decoration-slate-400">
+                  {product_detail.discount} Birr
+                </p>
+              )}
+              <p className="text-xl font-semibold text-sky-700">
                 {product_detail.product_price} Birr
               </p>
             </div>
             <p>{product_detail.description}</p>
             <div className="mt-10">
-              <Button className="bg-custom-primary hover:bg-custom-navy-1">
+              {product_in_cart ? (
+                <div className="my-2 flex items-center space-x-4">
+                  <button
+                    onClick={() =>
+                      decrementQuantity(product_in_cart.product_code)
+                    }
+                    className={cart_add_css}
+                  >
+                    <IoRemove />
+                  </button>
+                  <span>{product_in_cart.quantity}</span>
+                  <button
+                    onClick={() =>
+                      incrementQuantity(product_in_cart.product_code)
+                    }
+                    className={cart_add_css}
+                  >
+                    <IoAdd />
+                  </button>
+                </div>
+              ) : (
+                <Button
+                  onClick={addToCartHandler}
+                  // size="icon"
+                  className="bg-sky-500 hover:bg-sky-600"
+                >
+                  <BsCart2 />
+                  <span>Add to Cart</span>
+                  {/*   Add To Cart  */}
+                </Button>
+              )}
+              {/* <Button
+                onClick={addToCartHandler}
+                className="bg-custom-primary hover:bg-custom-navy-1"
+              >
                 <ShoppingCart /> Add To Cart
-              </Button>
+              </Button> */}
             </div>
           </div>
         </div>
         <div>
           <div className="mt-16 flex flex-row space-x-10">
-            {product_detail.image_gallery.map((image) => {
+            {/* {product_detail.image_gallery.map((image) => {
               return (
                 <img className="h-[200px] w-[200px] rounded-md" src={image} />
               );
-            })}
+            })} */}
+            {product_detail.image_gallery?.map((image, idx) => (
+              <img
+                key={idx}
+                className="h-[200px] w-[200px] rounded-md"
+                src={image}
+              />
+            ))}
           </div>
         </div>
-        <div className="space-y-4">
+        {/* <div className="space-y-4">
           <div className="flex items-center justify-center">
             <Dialog>
               <DialogTrigger>
@@ -150,7 +237,6 @@ const ProductDetail = () => {
                 />
               </DialogTrigger>
               <DialogContent className="max-w-3xl">
-                {/* <DialogTitle>Image Preview</DialogTitle> */}
                 <VisuallyHidden>
                   <DialogTitle>Image Preview</DialogTitle>
                 </VisuallyHidden>
@@ -171,7 +257,7 @@ const ProductDetail = () => {
               />
             </Zoom>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

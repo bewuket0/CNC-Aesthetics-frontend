@@ -2,12 +2,13 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="bg-custom-primary p-10 text-white">
+    // <div className="bg-custom-primary p-10 text-white">
+    <div className="mt-5 border-t bg-slate-100 p-10 text-custom-primary">
       <div className="mx-10">
         <div className="flex flex-row justify-between px-10 pb-32 pt-20">
           <div className="w-1/3">
             <h2 className="text-xl font-semibold">CNC AESTHETIC PRODUCTS</h2>
-            <p className="mt-2 text-slate-300">
+            <p className="mt-2 text-sky-700">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas in
               possimus fugit earum blanditiis debitis, iure animi laborum quod
               magnam.
