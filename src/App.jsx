@@ -1,33 +1,56 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import Test from "./pages/test";
 import Home from "./pages/user/Home";
 import Notfound from "./pages/Notfound";
 import Layout from "./pages/user/Layout";
+import About from "./pages/user/About";
+import Contact from "./pages/user/Contact";
+import ProductDetail from "./pages/user/ProductDetail";
+import Category from "./pages/user/Category";
+import Products from "./pages/user/Products";
+import ScrollToTop from "./components/ScrollToTop";
+import Cart from "./pages/user/Cart";
+import { AdminLayout } from "./pages/admin/Layout";
+import Categories from "./pages/admin/Categories";
+import Dashboard from "./pages/admin/Dashboard";
+import DashProducts from "./pages/admin/Products";
+import Checkout from "./pages/user/Checkout";
+import SuccessPage from "./pages/user/successPage";
 // import { Outlet } from "react-router-dom";
 
-const About = () => <div>About Page</div>;
-const Contact = () => <div>Contact Page</div>;
-// const Layout = () => (
-//   <div>
-//     <div className="border p-10">header</div>
-//     <main>
-//       <Outlet />
-//     </main>{" "}
-//   </div>
-// );
+// require("dotenv").config();
 function App() {
+  // bg-[#FAFAFA]
   return (
     <>
-      <div className="min-h-screen bg-custom-bg">
+      <div className="min-h-screen bg-[#f6fbfe]">
         <BrowserRouter>
           <ToastContainer />
+          <ScrollToTop />
           <Routes>
+            <Route path="/admin/" element={<AdminLayout />}>
+              <Route path="" element={<Dashboard />} />
+              <Route path="categories" element={<Categories />} />
+              <Route path="products" element={<DashProducts />} />
+              {/* <Route path="products" element={<Categories />} /> */}
+            </Route>
             <Route element={<Layout />}>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
 
               <Route path="/contact" element={<Contact />} />
+              <Route path="/categories" element={<Category />} />
+              <Route path="/products" element={<Products />} />
+              <Route
+                path="/products/detail/:pcode"
+                element={<ProductDetail />}
+              />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/success" element={<SuccessPage />} />
             </Route>
 
             <Route path="*" element={<Notfound />} />
