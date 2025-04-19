@@ -1,4 +1,4 @@
-import Category from "./Category";
+import Category from "./Advert_Banner";
 
 const About = () => {
   return (

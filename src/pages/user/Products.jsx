@@ -180,10 +180,23 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { useState, useEffect } from "react";
 
+import { useParams } from "react-router-dom";
+
 const base_url = import.meta.env.VITE_BASE_URL;
 
-const fetchProducts = async (page, search, limit) => {
-  let url = `${base_url}/product/fetch-all?page=${page}&limit=${limit}&search_key=${search}`;
+const fetchProducts = async (page, search, limit, category) => {
+  // let url = `${base_url}/product/fetch-all?page=${page}&limit=${limit}&search_key=${search}&category=${category}`;
+  // console.log("Fetching products from:", url);
+  // return axios.get(url).then((res) => res.data);
+
+  const params = new URLSearchParams();
+
+  params.append("page", page);
+  if (limit) params.append("limit", limit);
+  if (search) params.append("search_key", search);
+  if (category && category !== "all") params.append("category", category);
+
+  const url = `${base_url}/product/fetch-all?${params.toString()}`;
   console.log("Fetching products from:", url);
   return axios.get(url).then((res) => res.data);
 };
@@ -198,10 +211,11 @@ const Products = () => {
   const [limit, setLimit] = useState(5);
   const [search, setSearch] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
+  const { categoryid } = useParams();
 
   const { data, error, isLoading, isError, refetch } = useQuery({
     queryKey: ["products", page, debouncedSearch, limit],
-    queryFn: () => fetchProducts(page, debouncedSearch, limit),
+    queryFn: () => fetchProducts(page, debouncedSearch, limit, categoryid),
     staleTime: 30000,
     keepPreviousData: true,
   });

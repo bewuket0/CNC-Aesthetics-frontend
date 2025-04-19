@@ -5,7 +5,7 @@ import AccordionCard from "@/components/AccordionCard";
 import ProductCard from "@/components/productCard";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
-import Category from "./Category";
+import Category from "./Advert_Banner";
 import Categories from "@/components/LandingPage/Categories";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
@@ -85,7 +85,7 @@ const Home = () => {
 
   return (
     <div className="mx-52">
-      <div className="relative my-16 py-20">
+      <div className="relative my-5 py-10">
         <h2 className="mb-7 text-center text-4xl">Latest Products</h2>
         <Category />
       </div>

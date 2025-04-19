@@ -9,7 +9,7 @@ import Layout from "./pages/user/Layout";
 import About from "./pages/user/About";
 import Contact from "./pages/user/Contact";
 import ProductDetail from "./pages/user/ProductDetail";
-import Category from "./pages/user/Category";
+import Category from "./pages/user/Advert_Banner";
 import Products from "./pages/user/Products";
 import ScrollToTop from "./components/ScrollToTop";
 import Cart from "./pages/user/Cart";
@@ -44,6 +44,7 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/categories" element={<Category />} />
               <Route path="/products" element={<Products />} />
+              <Route path="/products/:categoryid" element={<Products />} />
               <Route
                 path="/products/detail/:pcode"
                 element={<ProductDetail />}
